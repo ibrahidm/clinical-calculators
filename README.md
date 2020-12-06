@@ -1,4 +1,4 @@
-# Clinical Calculator
+# Clinical Calculators
 
 A repository of clinical equations used to calculate various patient parameters as well as compute pharmacokinetic / pharmacodynamic models.
 
