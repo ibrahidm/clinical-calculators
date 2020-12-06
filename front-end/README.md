@@ -1,4 +1,8 @@
-# front-end
+# Clinical Calculators Front-End Playground
+
+A front-end web application built using VueJS + Vueitfy to showcase simple implementation of the calculations found in this repository. 
+
+Use this playground to try-out different calculations to assess what suits your needs!
 
 ## Project setup
 ```
