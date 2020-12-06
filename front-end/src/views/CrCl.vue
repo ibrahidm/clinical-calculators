@@ -13,6 +13,15 @@
                >
                   <v-spacer />
                   Creatinine Clearance (Cockcroft-Gault Equation)
+                  <v-btn
+                     icon
+                     class="ml-1"
+                     @click.stop="dialog = true"
+                  >
+                     <v-icon>
+                        mdi-information-outline
+                     </v-icon>
+                  </v-btn>
                   <v-spacer />
                </v-card-title>
             </v-card>
@@ -156,6 +165,8 @@
                min-height="350"
                max-width="950"
                class="mx-auto"
+               :color="!crcl ? 'rgba(0,0,0,0.2)' : ''"
+               :disabled="!crcl"
             >
                <v-card-title
                   class="text-subtitle-1"
@@ -187,16 +198,38 @@
                         align-self="center"
                      >
                         <v-card
-                           class="my-auto mx-auto"
+                           class="overflow-y-auto my-auto mx-auto"
+                           max-height="250"
                            flat
                         >
-                           <div
+                           <v-card
                               v-for="(step, index) in steps"
                               :key="index"
-                              class="text-body-1"
+                              max-height="200"
+                              class="overflow-y-auto text-body-1 ma-2"
                            >
-                              > {{ step }}
-                        </div>
+                              <v-card-text>
+                                 <v-row>
+                                    <v-col
+                                       cols="3"
+                                       align-self="center"
+                                    >
+                                       <div
+                                          class="my-auto text-overline"
+                                       >
+                                          {{ step.substr(0, 6) }}
+                                       </div>
+                                    </v-col>
+                                    <v-col>
+                                       <div
+                                          class="text-overline"
+                                       >
+                                          {{ step.substr(8, step.length - 1) }}
+                                       </div>
+                                    </v-col>
+                                 </v-row>
+                              </v-card-text>
+                           </v-card>
                         </v-card>
                      </v-col>
                   </v-row>
@@ -204,14 +237,22 @@
             </v-card>
          </v-col>
       </v-row>
+      <base-dialog
+         v-model="dialog"
+         title="Creatinine Clearance"
+         width="600"
+         :para1="para1"
+         :para2="para2"
+         :para3="para3"
+      />
    </v-container>
 </template>
 
 <script>
-// eslint-disable-next-line
 import { getCrCl } from '@/model/crcl'
 
 export default {
+   name: 'CrCl',
    data: () => ({
       items: [{ sex: 'Male', val: true }, { sex: 'Female', val: false }],
       valid: false,
@@ -227,7 +268,11 @@ export default {
          height: null
       },
       crcl: null,
-      steps: null
+      steps: null,
+      dialog: false,
+      para1: 'CrCl is a parameter that measures the approximate volume of plasma cleared of creatinine (by the kidney) per minute. It is measured in units of mL/min. This provides an objective measure in order to assess kidney function.',
+      para2: 'While there are other methods of calculating CrCl and estimating renal function (e.g. eGFR), CrCl calculated using the Cockcroft-Gault equation remains the industry standard because the vast majority of drugs have been studied using this equation and are thereby dosed based on its output',
+      para3: 'Here in this application you can optionally enter the height. This will perform a calculation for Ideal Body Weight (IBW) and Adjusted Body Weight (ABW). The appropriate weight will be used based on the patient\'s actual body weight in relation to his/her IBW.'
    }),
 
    computed: {
