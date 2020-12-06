@@ -1,3 +1,5 @@
+// Created by Dr. Daniel M. Ibrahim, PharmD
+
 const compose = (f, g) => (...args) => f(g(...args));
 
 const patient = {
