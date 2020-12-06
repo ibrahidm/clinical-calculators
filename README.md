@@ -2,7 +2,7 @@
 
 A repository of clinical equations used to calculate various patient parameters as well as compute pharmacokinetic / pharmacodynamic models.
 
-As more equations are added, library will be published as a npm package to the npm registry.
+As more equations are added, library will be published as an npm package to the npm registry.
 
 ##
 
