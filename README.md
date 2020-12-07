@@ -8,7 +8,7 @@ Project also includes a VueJS application in order to test equations out in a us
 
 ##
 
-#### Current Contents (last updated: Dec 5th/2020):
+#### Current Contents (last updated: Dec 7th/2020):
 
 1. Creatinine Clearance (`cr-cl`)
 2. Michaelis-Menten Elimination (`michaelis-menten`)
