@@ -15,7 +15,7 @@
             align-self="center"
          >
             <v-card
-               class="ma-auto"
+               class="mx-auto"
                max-width="450"
             >
                <v-card-title
