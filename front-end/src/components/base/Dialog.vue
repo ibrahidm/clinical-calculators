@@ -23,13 +23,17 @@
             >
                {{ para1 }}
             </div>
-            <br>
+            <br
+               v-if="para1"
+            >
             <div
                v-if="para2"
             >
                {{ para2 }}
             </div>
-            <br>
+            <br
+               v-if="para2"
+            >
             <div
                v-if="para3"
             >

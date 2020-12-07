@@ -155,6 +155,7 @@
       <base-dialog
          title="Michaelis-Menten Elimination"
          :para1="para1"
+         :para2="para2"
          v-model="dialog"
          width="600"
       />
@@ -191,7 +192,8 @@ export default {
       fill: false,
       type: 'trend',
       autoLineWidth: false,
-      para1: 'Information about MME will go here.'
+      para1: 'The Michaelis-Menten equation (MME) provides a model for concentration-dependent enzymatic reactions. For metabolic processes wherein the metabolizing enzyme experiences saturation, the reaction proceeds in a non-linear fashion in proportion to the concentration of substrate and the catalytic capacity of the enzyme. When this principal is applied to drugs, it is most commonly modelled using the MME and is typically referred to as MMPK (or simply as Michaelis-Menten Kinetics).',
+      para2: 'In this application you can see an example of how the `vals` Array output can be used in order to create a plot.'
    }),
 
    methods: {
