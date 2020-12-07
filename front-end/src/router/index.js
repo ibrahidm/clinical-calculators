@@ -20,7 +20,7 @@ const routes = [
    },
    {
       path: '/michaelis-menten',
-      name: 'Michaelis-Menten Elimination',
+      name: 'Michaelis-Menten Kinetics',
       component: () => import('../views/MichaelisMenten.vue')
    }
 ]

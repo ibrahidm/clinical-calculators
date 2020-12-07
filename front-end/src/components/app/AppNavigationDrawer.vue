@@ -30,7 +30,7 @@ export default {
    data: () => ({
       items: [
          'Creatinine Clearance',
-         'Michaelis-Menten Elimination'
+         'Michaelis-Menten Kinetics'
       ]
    })
 }

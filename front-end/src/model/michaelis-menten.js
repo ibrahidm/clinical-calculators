@@ -4,16 +4,16 @@ const params = {
    vmax: null,
    substrateConcentration: null,
    km: null,
-   eliminationRate: null,
-   eliminationRateSteps: [],
+   reactionRate: null,
+   reactionRateSteps: [],
    vals: [],
    temp: null
 }
 
 const compose = (f, g) => (...args) => f(g(...args))
 
-const getMichMenEliminationRate = function ({ vmax, substrateConcentration, km }) {
-   return calculateEliminationRate(
+const getMichMenReactionRate = function ({ vmax, substrateConcentration, km }) {
+   return calculateReactionRate(
       outputResult,
       populateChartData,
       performDivision,
@@ -23,7 +23,7 @@ const getMichMenEliminationRate = function ({ vmax, substrateConcentration, km }
    )({ ...params, vmax, substrateConcentration, km })
 }
 
-function calculateEliminationRate (...fns) {
+function calculateReactionRate (...fns) {
    return fns.reduce(compose)
 }
 
@@ -33,20 +33,20 @@ function getParams ({ vmax, substrateConcentration, km }) {
 
 function calculateNumerator (params) {
    const value = params.vmax * params.substrateConcentration
-   const updateStep = params.eliminationRateSteps.concat(`Step 1: Vmax * [substrate]: ${params.vmax} x ${params.substrateConcentration} = ${value}`)
-   return { ...params, eliminationRate: value, eliminationRateSteps: updateStep }
+   const updateStep = params.reactionRateSteps.concat(`Step 1: Vmax * [substrate]: ${params.vmax} x ${params.substrateConcentration} = ${value}`)
+   return { ...params, reactionRate: value, reactionRateSteps: updateStep }
 }
 
 function calculateDenominator (params) {
    const value = params.km + params.substrateConcentration
-   const updateStep = params.eliminationRateSteps.concat(`Step 2: km + [substrate]: ${params.km} + ${params.substrateConcentration} = ${value}`)
-   return { ...params, temp: value, eliminationRateSteps: updateStep }
+   const updateStep = params.reactionRateSteps.concat(`Step 2: km + [substrate]: ${params.km} + ${params.substrateConcentration} = ${value}`)
+   return { ...params, temp: value, reactionRateSteps: updateStep }
 }
 
 function performDivision (params) {
-   const value = params.eliminationRate / params.temp
-   const updateStep = params.eliminationRateSteps.concat(`Step 3: Vmax * [substrate] / (km + [substrate]): ${params.eliminationRate} / ${params.temp} = ${value}`)
-   return { ...params, eliminationRate: value, eliminationRateSteps: updateStep }
+   const value = params.reactionRate / params.temp
+   const updateStep = params.reactionRateSteps.concat(`Step 3: Vmax * [substrate] / (km + [substrate]): ${params.reactionRate} / ${params.temp} = ${value}`)
+   return { ...params, reactionRate: value, reactionRateSteps: updateStep }
 }
 
 function populateChartData (params) {
@@ -60,10 +60,10 @@ function populateChartData (params) {
    return { ...params, vals: arr }
 }
 
-function outputResult ({ eliminationRate, eliminationRateSteps, vals }) {
-   return { eliminationRate, eliminationRateSteps, vals }
+function outputResult ({ reactionRate, reactionRateSteps, vals }) {
+   return { reactionRate, reactionRateSteps, vals }
 }
 
 module.exports = {
-   getMichMenEliminationRate
+   getMichMenReactionRate
 }

@@ -5,7 +5,7 @@
             cols="12"
          >
             <base-title-card
-               title="Michaelis-Menten Elimination"
+               title="Michaelis-Menten Kinetics"
                @on-click="dialog = true"
                class="mb-3"
             />
@@ -133,7 +133,7 @@
                         <div
                            class="overline font-weight-thin"
                         >
-                           Elimination Rate (y-axis) vs. Concentration (x-axis) Plot
+                           Enzymatic Reaction Rate (y-axis) vs. Concentration (x-axis) Plot
                         </div>
                      </v-card-text>
                   </v-card>
@@ -142,7 +142,7 @@
                   cols="12"
                >
                   <base-results-card
-                     :result="eliminationRate"
+                     :result="reactionRate"
                      :steps="steps"
                      :color="vals.length === 0 ? 'rgba(0,0,0,0.2)' : ''"
                      :disabled="vals.length === 0"
@@ -162,9 +162,10 @@
 </template>
 
 <script>
-import { getMichMenEliminationRate } from '@/model/michaelis-menten.js'
+import { getMichMenReactionRate } from '@/model/michaelis-menten.js'
 
 export default {
+   name: 'Michaelis-Menten-Kinetics',
    data: () => ({
       dialog: false,
       valid: false,
@@ -177,7 +178,7 @@ export default {
          km: null
       },
 
-      eliminationRate: null,
+      reactionRate: null,
       steps: null,
       vals: [],
       vals2: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
@@ -196,10 +197,11 @@ export default {
    methods: {
       calculate ({ vmax, substrateConcentration, km }) {
          this.vals = []
+         substrateConcentration = parseFloat(substrateConcentration)
          km = parseFloat(km)
-         const { eliminationRate, eliminationRateSteps, vals } = getMichMenEliminationRate({ vmax, substrateConcentration, km })
-         this.eliminationRate = eliminationRate
-         this.steps = eliminationRateSteps
+         const { reactionRate, reactionRateSteps, vals } = getMichMenReactionRate({ vmax, substrateConcentration, km })
+         this.reactionRate = reactionRate
+         this.steps = reactionRateSteps
          this.vals = [...vals]
       }
    }
