@@ -153,7 +153,7 @@
          </v-col>
       </v-row>
       <base-dialog
-         title="Michaelis-Menten Elimination"
+         title="Michaelis-Menten Pharmacokinetics"
          :para1="para1"
          :para2="para2"
          v-model="dialog"
