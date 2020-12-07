@@ -17,6 +17,11 @@ const routes = [
       path: '/crcl',
       name: 'Creatinine Clearance',
       component: () => import('../views/CrCl.vue')
+   },
+   {
+      path: '/michaelis-menten',
+      name: 'Michaelis-Menten Elimination',
+      component: () => import('../views/MichaelisMenten.vue')
    }
 ]
 
