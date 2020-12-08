@@ -117,7 +117,7 @@
                            <v-text-field
                               v-model="calculateABW"
                               outlined
-                              label="Actual Body Weight"
+                              label="Adusted Body Weight"
                               placeholder=" "
                               type="number"
                               suffix="Kg"
